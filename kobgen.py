@@ -1,4 +1,6 @@
 import random
+from mastodon import Mastodon
+from api_key import api_access_token
 
 ATTRIBUTES = {
     "color_primary"   : "teal",
@@ -14,6 +16,10 @@ ATTRIBUTES = {
 
 def main():
     random.seed()
-    print(random.randrange(1,10))
+    mastodon = Mastodon(
+        access_token = api_access_token,
+        api_base_url = "https://hellsite.site"
+    )
+    mastodon.toot("More test posting")
 
 main()
